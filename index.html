@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChickenFire</title>
+<meta name="description" content="ChickenFire — 귀여운 캐주얼 모바일 게임을 만드는 1인 게임 스튜디오. 탱크 월드: 강철의 왕관 개발사.">
+<link rel="icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fff8ea;
+    --card: #ffffff;
+    --ink: #2b2a3a;
+    --muted: #6b6878;
+    --line: #2b2a3a;
+    --mint: #3fd6b4;
+    --mint-dark: #1fa98a;
+    --red: #ff5a4e;
+    --yellow: #ffd23f;
+    --shadow: #2b2a3a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1d1c28;
+      --card: #2a2938;
+      --ink: #f5f2ea;
+      --muted: #b4b0c2;
+      --line: #f5f2ea;
+      --shadow: #0d0c14;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1d1c28;
+    --card: #2a2938;
+    --ink: #f5f2ea;
+    --muted: #b4b0c2;
+    --line: #f5f2ea;
+    --shadow: #0d0c14;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans KR", system-ui, sans-serif;
+    line-height: 1.65;
+    background-image: radial-gradient(circle, color-mix(in srgb, var(--mint) 22%, transparent) 2px, transparent 2.5px);
+    background-size: 28px 28px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 16px; }
+  h1, h2, h3, .brand { font-family: "Jua", "Noto Sans KR", sans-serif; font-weight: 400; letter-spacing: .01em; }
+
+  header { padding: 40px 0 8px; text-align: center; }
+  .brand {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: clamp(2.2rem, 7vw, 3.4rem); margin: 0;
+  }
+  .brand .egg {
+    width: 1.1em; height: 1.1em; border-radius: 50%;
+    background: var(--yellow); border: 4px solid var(--line);
+    box-shadow: 0 5px 0 var(--shadow);
+    display: grid; place-items: center; font-size: .6em;
+  }
+  .brand b { color: var(--red); font-weight: 400; }
+  .tagline { margin: 8px 0 0; color: var(--muted); font-size: 1.05rem; }
+  .tagline span { display: block; font-size: .92rem; }
+
+  .card {
+    background: var(--card);
+    border: 4px solid var(--line);
+    border-radius: 24px;
+    box-shadow: 0 8px 0 var(--shadow);
+    padding: 24px;
+    margin: 32px 0;
+  }
+  .card h2 {
+    margin: 0 0 16px; font-size: 1.7rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .card h2 small { font-family: "Noto Sans KR", sans-serif; font-size: .85rem; color: var(--muted); }
+  .chip {
+    display: inline-block; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--mint); border: 3px solid var(--line);
+  }
+  .chip.red { background: var(--red); }
+  .chip.yellow { background: var(--yellow); }
+
+  .game { display: grid; gap: 20px; }
+  .banner {
+    width: 100%; height: auto; display: block;
+    border: 4px solid var(--line); border-radius: 18px;
+  }
+  .game-head { display: flex; gap: 16px; align-items: center; }
+  .game-head img {
+    width: 84px; height: 84px; border-radius: 20px;
+    border: 4px solid var(--line); flex: none;
+  }
+  .game-head h3 { margin: 0; font-size: 1.6rem; line-height: 1.2; }
+  .game-head p { margin: 4px 0 0; color: var(--muted); font-size: .95rem; }
+  .features { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .features li {
+    border: 3px solid var(--line); border-radius: 16px; padding: 12px 14px;
+    background: color-mix(in srgb, var(--mint) 14%, var(--card));
+  }
+  .features li strong { display: block; font-family: "Jua", sans-serif; font-weight: 400; font-size: 1.15rem; }
+  .badge {
+    display: inline-block; margin-top: 4px;
+    background: var(--yellow); color: #2b2a3a;
+    border: 3px solid var(--line); border-radius: 999px;
+    padding: 4px 14px; font-weight: 700; font-size: .9rem;
+  }
+  .en { color: var(--muted); font-size: .92rem; }
+
+  .btn {
+    display: inline-block; text-decoration: none;
+    background: var(--mint); color: #13322b;
+    border: 4px solid var(--line); border-radius: 999px;
+    box-shadow: 0 5px 0 var(--shadow);
+    padding: 10px 22px; font-family: "Jua", sans-serif; font-size: 1.2rem;
+    transition: transform .08s, box-shadow .08s;
+    word-break: break-all;
+  }
+  .btn:hover { transform: translateY(2px); box-shadow: 0 3px 0 var(--shadow); }
+  .btn:active { transform: translateY(5px); box-shadow: 0 0 0 var(--shadow); }
+  .btn.red { background: var(--red); color: #fff; }
+  .row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+
+  table { border-collapse: collapse; width: 100%; }
+  th, td { text-align: left; padding: 10px 6px; border-bottom: 2px dashed color-mix(in srgb, var(--line) 35%, transparent); }
+  th { width: 34%; color: var(--muted); font-weight: 700; }
+  tr:last-child th, tr:last-child td { border-bottom: 0; }
+
+  footer { text-align: center; color: var(--muted); padding: 8px 0 40px; font-size: .9rem; }
+  a { color: var(--mint-dark); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) a { color: var(--mint); } }
+  :root[data-theme="dark"] a { color: var(--mint); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1 class="brand"><span class="egg">🐔</span>Chicken<b>Fire</b></h1>
+      <p class="tagline">귀여운 캐주얼 모바일 게임을 만드는 1인 게임 스튜디오
+        <span>An indie studio making cute, casual mobile games.</span></p>
+    </header>
+
+    <section class="card">
+      <h2><span class="chip"></span>게임 <small>Games</small></h2>
+      <div class="game">
+        <img class="banner" src="banner.png" alt="탱크 월드: 강철의 왕관 대표 이미지" width="1024" height="500">
+        <div class="game-head">
+          <img src="icon.png" alt="탱크 월드 아이콘" width="84" height="84">
+          <div>
+            <h3>탱크 월드: 강철의 왕관</h3>
+            <p>Tank World: Steel Crown · Android</p>
+            <span class="badge">출시 준비 중 · Coming soon</span>
+          </div>
+        </div>
+        <p>귀여운 장난감 탱크를 모아 세계를 여행하는 턴제 포격 어드벤처! 작은 민트색 탱크 <strong>팡</strong>과 친구들이 흔들리는 강철의 왕관을 지키러 초원·사막·정글·바다·설원·화산을 누빕니다.<br>
+          <span class="en">A turn-based artillery adventure with adorable toy tanks. Aim, set your power, and fire!</span></p>
+        <ul class="features">
+          <li><strong>직접 조준하는 포격</strong>각도와 힘, 바람과 지형을 읽고 한 방!</li>
+          <li><strong>개성 만점 탱크 20종</strong>탱크마다 다른 포탄·패시브·궁극기</li>
+          <li><strong>7개 지역 스토리</strong>지역마다 다른 지형과 날씨</li>
+          <li><strong>내 페이스대로</strong>광고는 보고 싶을 때만, 배너·강제 광고 없음</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="chip red"></span>문의 <small>Contact</small></h2>
+      <p>게임 문의, 결제·환불 문의, 버그 제보 모두 이메일로 받습니다.<br>
+        <span class="en">For support, purchases, refunds or bug reports, please email us.</span></p>
+      <div class="row">
+        <a class="btn" href="mailto:ad.chickenfire@gmail.com">✉ ad.chickenfire@gmail.com</a>
+        <a class="btn red" href="privacy.html">개인정보처리방침 · Privacy</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="chip yellow"></span>사업자 정보 <small>Business</small></h2>
+      <table>
+        <tr><th>상호</th><td>ChickenFire (치킨파이어)</td></tr>
+        <tr><th>이메일</th><td><a href="mailto:ad.chickenfire@gmail.com">ad.chickenfire@gmail.com</a></td></tr>
+      </table>
+    </section>
+
+    <footer>© 2026 ChickenFire. All rights reserved.</footer>
+  </div>
+</body>
+</html>
